@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#17191F">
+
+    <title>Student Portal | Tra cứu ngày công tác xã hội</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="page-shell">
+
+        <!-- HEADER -->
+        <header class="site-header">
+            <div class="container header-inner">
+
+                <a href="#" class="brand">
+                    <div class="brand-logo">
+                        <span>SP</span>
+                    </div>
+
+                    <div class="brand-info">
+                        <span class="brand-name">STUDENT PORTAL</span>
+                        <span class="brand-caption">Student Services System</span>
+                    </div>
+                </a>
+
+                <div class="header-status">
+                    <span class="status-dot"></span>
+                    <span>Hệ thống tra cứu</span>
+                </div>
+
+            </div>
+        </header>
+
+
+        <main class="container main-content">
+
+            <!-- HERO -->
+            <section class="hero-section">
+
+                <div class="hero-label">
+                    <span class="hero-label-icon">✦</span>
+                    CỔNG THÔNG TIN SINH VIÊN
+                </div>
+
+                <h1>
+                    Tra cứu ngày công
+                    <span class="gradient-text">tác xã hội</span>
+                </h1>
+
+                <p class="hero-description">
+                    Tra cứu thông tin sinh viên, theo dõi lịch sử hoạt động
+                    và tổng hợp số ngày công tác xã hội của bạn.
+                </p>
+
+            </section>
+
+
+            <!-- SEARCH -->
+            <section class="search-card">
+
+                <div class="section-heading">
+                    <div class="heading-icon">
+                        <span>⌕</span>
+                    </div>
+
+                    <div>
+                        <h2>Tra cứu thông tin</h2>
+                        <p>Nhập mã số sinh viên để bắt đầu tìm kiếm.</p>
+                    </div>
+                </div>
+
+                <form id="searchForm" class="search-form">
+
+                    <div class="form-group form-group-main">
+                        <label for="mssvInput">
+                            Mã số sinh viên
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="mssvInput"
+                            name="mssv"
+                            placeholder="Nhập mã số sinh viên..."
+                            autocomplete="off"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nameInput">Họ và tên</label>
+
+                        <input
+                            type="text"
+                            id="nameInput"
+                            name="name"
+                            placeholder="Nhập họ và tên..."
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="classInput">Mã lớp</label>
+
+                        <input
+                            type="text"
+                            id="classInput"
+                            name="class"
+                            placeholder="Nhập mã lớp..."
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div class="form-actions">
+
+                        <button type="submit" id="searchBtn" class="btn-primary">
+                            <span class="btn-icon">⌕</span>
+                            <span class="btn-text">Tra cứu ngay</span>
+                        </button>
+
+                        <button type="button" id="clearBtn" class="btn-secondary">
+                            <span>↺</span>
+                            Xóa bộ lọc
+                        </button>
+
+                    </div>
+
+                </form>
+
+                <div class="search-note">
+                    <span class="note-icon">ⓘ</span>
+                    Mã số sinh viên là thông tin bắt buộc. Họ tên và mã lớp là tùy chọn.
+                </div>
+
+            </section>
+
+
+            <!-- ALERT -->
+            <div id="alertBox" class="alert-box" hidden></div>
+
+
+            <!-- RESULTS -->
+            <section id="resultSection" class="result-section" hidden>
+
+                <!-- STUDENT PROFILE -->
+                <div class="student-card">
+
+                    <div class="student-profile">
+
+                        <div id="studentAvatar" class="student-avatar">
+                            SV
+                        </div>
+
+                        <div class="student-details">
+                            <span class="profile-label">THÔNG TIN SINH VIÊN</span>
+
+                            <h2 id="studentName">Tên sinh viên</h2>
+
+                            <div class="student-meta">
+                                <span>
+                                    <span class="meta-label">MSSV</span>
+                                    <strong id="studentMssv">---</strong>
+                                </span>
+
+                                <span class="meta-divider"></span>
+
+                                <span>
+                                    <span class="meta-label">Lớp</span>
+                                    <strong id="studentClass">---</strong>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="verified-label">
+                        <span class="verified-dot"></span>
+                        Đã tìm thấy
+                    </div>
+
+                </div>
+
+
+                <!-- STATISTICS -->
+                <div class="stats-grid">
+
+                    <article class="stat-card stat-primary">
+                        <div class="stat-top">
+                            <span class="stat-label">TỔNG NGÀY CÔNG</span>
+                            <div class="stat-icon icon-purple">◷</div>
+                        </div>
+
+                        <div class="stat-bottom">
+                            <strong id="totalDays" class="stat-value">0</strong>
+                            <span class="stat-unit">ngày</span>
+                        </div>
+
+                        <div class="stat-decoration"></div>
+                    </article>
+
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-label">HOẠT ĐỘNG</span>
+                            <div class="stat-icon icon-blue">▤</div>
+                        </div>
+
+                        <div class="stat-bottom">
+                            <strong id="totalActivities" class="stat-value">0</strong>
+                            <span class="stat-unit">hoạt động</span>
+                        </div>
+                    </article>
+
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-label">NGÀY THAM GIA</span>
+                            <div class="stat-icon icon-green">▦</div>
+                        </div>
+
+                        <div class="stat-bottom">
+                            <strong id="totalDates" class="stat-value">0</strong>
+                            <span class="stat-unit">ngày</span>
+                        </div>
+                    </article>
+
+                </div>
+
+
+                <!-- ACTIVITY TABLE -->
+                <section class="activity-section">
+
+                    <div class="activity-header">
+
+                        <div>
+                            <div class="activity-title-row">
+                                <h2>Lịch sử hoạt động</h2>
+                                <span id="resultCount" class="result-count">0 bản ghi</span>
+                            </div>
+
+                            <p id="resultDescription">
+                                Danh sách các hoạt động công tác xã hội.
+                            </p>
+                        </div>
+
+                        <button
+                            type="button"
+                            id="sortDateBtn"
+                            class="sort-button"
+                        >
+                            ↑ Cũ nhất trước
+                        </button>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table class="activity-table">
+
+                            <thead>
+                                <tr>
+                                    <th class="col-number">STT</th>
+                                    <th>MSSV</th>
+                                    <th>HỌ VÀ TÊN</th>
+                                    <th>MÃ LỚP</th>
+                                    <th>TÊN HOẠT ĐỘNG</th>
+                                    <th>NGÀY THỰC HIỆN</th>
+                                    <th class="col-days">NGÀY CÔNG</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="resultBody">
+                                <!-- JavaScript render dữ liệu tại đây -->
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <div class="table-footer">
+                        <span id="tableFooterText">
+                            Hiển thị kết quả tra cứu
+                        </span>
+
+                        <span class="table-footer-right">
+                            Dữ liệu công tác xã hội
+                        </span>
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- INFORMATION -->
+            <section class="information-section">
+
+                <div class="information-icon">ⓘ</div>
+
+                <div>
+                    <h3>Lưu ý khi tra cứu</h3>
+
+                    <p>
+                        Thông tin hiển thị được tổng hợp từ dữ liệu hoạt động
+                        công tác xã hội, và do cá nhân tổng hợp. Có thể sai sót chỉ xem tham khảo.
+                    </p>
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- FOOTER -->
+        <footer class="site-footer">
+            <div class="container footer-inner">
+
+                <div class="footer-brand">
+                    <span class="footer-brand-mark">SP</span>
+                    <span>STUDENT PORTAL</span>
+                </div>
+
+                <p>
+                    Student Services System
+                    <span class="footer-separator">·</span>
+                    Social Work Lookup
+                </p>
+
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
